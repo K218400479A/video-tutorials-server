@@ -1,0 +1,39 @@
+<div class="container">
+
+    <main>
+        <div class="container">
+            <h1 class="my-4">Course title : {{title}}
+            </h1>
+
+            <div class="row">
+
+                <div class="col-md-8">
+                    <iframe height="400" width="600" src="{{imgURL}}" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <h3 class="my-3">Course Description</h3>
+                    <p>{{description}}</p>
+                    {{#if isCurrentUser}}
+                    <form action='/delete/{{id}}' method="POST">
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                    <a class="btn btn-warning" href="/edit/{{id}}">Edit</a>
+                    {{else if enrolled}}
+                    <span class="enrolled-span">You are enrolled</span>
+                    {{else}}
+                    {{!-- <a class="btn btn-primary" href="/">Enroll</a> --}}
+                    <form action='/enroll/{{id}}' method="POST">
+                        <input class="btn btn-primary" type="submit" value="Enroll">
+                    </form>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
