@@ -17,13 +17,13 @@ module.exports = (req, res) => {
                         type: "error",
                         message: "ERROR: only the video creator can perform this action"
                     });
-                    return res.redirect(`/details/${id}`);
+                    return res.redirect(res.context.prependURI + `/details/${id}`);
                 }
                 res.cookie("status", {
                     type: "success",
                     message: "Successfully deleted video"
                 });
-                res.redirect("/");
+                res.redirect(res.context.prependURI + "/");
             })
             .catch(err => {
                 console.error(err);
@@ -31,8 +31,8 @@ module.exports = (req, res) => {
                     type: "error",
                     message: "ERROR: video could not be found"
                 });
-                res.redirect(`/`);
+                res.redirect(res.context.prependURI + "/");
             });
     }
-    else res.redirect("/");
+    else res.redirect(res.context.prependURI + "/");
 }

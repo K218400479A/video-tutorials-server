@@ -24,10 +24,10 @@ module.exports = (req, res) => {
             .catch(err => console.error(err));
 
         Promise.all([a, b]).then(value => {
-            return res.redirect(`/details/${videoID}`);
+            return res.redirect(res.context.prependURI + `/details/${videoID}`);
         });
 
     }
 
-    else res.redirect("/");
+    else res.redirect(res.context.prependURI + "/");
 };

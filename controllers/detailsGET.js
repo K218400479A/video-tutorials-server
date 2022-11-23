@@ -29,9 +29,9 @@ module.exports = function (req, res) {
                     type: "error",
                     message: "ERROR: video could not be found"
                 });
-                res.redirect("/");
+                res.redirect(res.context.prependURI + "/");
             });
 
     }
-    else res.redirect("/");
+    else res.redirect(res.context.prependURI + "/");
 };

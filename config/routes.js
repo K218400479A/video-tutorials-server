@@ -24,6 +24,7 @@ module.exports = (app) => {
 
     app.use((req, res, next) => {
         res.context = {};
+        res.context.prependURI = "/video-tutorials";
         if (req.cookies.user) {
             let decodedJWT = jwt.verify(req.cookies.user, jwtConfig.secret);
             res.context = {
@@ -64,7 +65,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Not logged in"
             });
-            res.redirect("/");
+            res.redirect(res.context.prependURI + "/");
         }
     });
     app.post("/create", createPOST);
@@ -87,7 +88,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Already logged in"
             });
-            res.redirect("/");
+            res.redirect(res.context.prependURI + "/");
         }
     });
     app.post("/login", login);
@@ -99,7 +100,7 @@ module.exports = (app) => {
             type: "success",
             message: "Successfully logged out"
         });
-        res.redirect("/");
+        res.redirect(res.context.prependURI + "/");
     });
 
     // REGISTER
@@ -110,7 +111,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Already logged in"
             });
-            res.redirect("/");
+            res.redirect(res.context.prependURI + "/");
         }
     });
     app.post("/register",

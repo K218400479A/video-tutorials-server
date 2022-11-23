@@ -29,7 +29,7 @@ module.exports = (req, res) => {
                             type: "success",
                             message: "Login successful"
                         });
-                        res.redirect("/");
+                        res.redirect(res.context.prependURI + "/");
                     }
                     else {
                         res.status(406);

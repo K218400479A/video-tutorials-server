@@ -53,7 +53,7 @@ module.exports = (req, res) => {
                                 message: "User created, please log in"
                             });
 
-                            res.redirect("/login");
+                            res.redirect(res.context.prependURI + "/login");
                             // res.end();
                         })
                         .catch(err => { console.log(err) });

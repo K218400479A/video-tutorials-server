@@ -17,7 +17,7 @@ module.exports = {
                             type: "error",
                             message: "ERROR: only the video creator can perform this action"
                         });
-                        return res.redirect(`/details/${id}`);
+                        return res.redirect(res.context.prependURI + `/details/${id}`);
                     }
                     res.context.id = video._id;
                     res.context.title = video.title;
@@ -33,7 +33,7 @@ module.exports = {
                         type: "error",
                         message: "ERROR: video could not be found"
                     });
-                    res.redirect(`/`);
+                    res.redirect(res.context.prependURI + "/");
                 });
         }
         else {
@@ -41,7 +41,7 @@ module.exports = {
                 type: "error",
                 message: "ERROR: User must be logged in to access this page"
             });
-            return res.redirect(`/details/${id}`);
+            return res.redirect(res.context.prependURI + `/details/${id}`);
         }
     },
 
@@ -62,21 +62,21 @@ module.exports = {
                     type: "warning",
                     message: "The title should be at least 4 characters"
                 });
-                return res.redirect(`/edit/${id}`);
+                return res.redirect(res.context.prependURI + `/edit/${id}`);
             }
             if (updates.description.length < 20) {
                 res.cookie("status", {
                     type: "error",
                     message: "The description should be at least 20 characters long"
                 });
-                return res.redirect(`/edit/${id}`);
+                return res.redirect(res.context.prependURI + `/edit/${id}`);
             }
             if (!(updates.imgURL.startsWith("http://") || updates.imgURL.startsWith("https://"))) {
                 res.cookie("status", {
                     type: "error",
                     message: "The image URL should start with http:// or https://"
                 });
-                return res.redirect(`/edit/${id}`);
+                return res.redirect(res.context.prependURI + `/edit/${id}`);
             }
 
             let newURL;
@@ -97,7 +97,7 @@ module.exports = {
                             type: "error",
                             message: "ERROR: only the video creator can perform this action"
                         });
-                        return res.redirect(`/details/${id}`);
+                        return res.redirect(res.context.prependURI + `/details/${id}`);
                     }
 
                     video.title = updates.title;
@@ -111,7 +111,7 @@ module.exports = {
                                 type: "success",
                                 message: "Update successful"
                             });
-                            res.redirect(`/details/${id}`);
+                            res.redirect(res.context.prependURI + `/details/${id}`);
                         })
                         .catch(err => {
                             console.error(err);
@@ -119,7 +119,7 @@ module.exports = {
                                 type: "error",
                                 message: "ERROR: there was an problem trying to edit the video"
                             });
-                            res.redirect(`/edit/${id}`);
+                            res.redirect(res.context.prependURI + `/edit/${id}`);
                         });
                 })
                 .catch(err => {
@@ -128,9 +128,9 @@ module.exports = {
                         type: "error",
                         message: "ERROR: video could not be found"
                     });
-                    res.redirect(`/`);
+                    res.redirect(res.context.prependURI + "/");
                 });
         }
-        else res.redirect("/");
+        else res.redirect(res.context.prependURI + "/");
     },
 }
