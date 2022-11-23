@@ -18,15 +18,15 @@
                     <h3 class="my-3">Course Description</h3>
                     <p>{{description}}</p>
                     {{#if isCurrentUser}}
-                    <form action='/delete/{{id}}' method="POST">
+                    <form action='delete/{{id}}' method="POST">
                         <input class="btn btn-danger" type="submit" value="Delete">
                     </form>
-                    <a class="btn btn-warning" href="/edit/{{id}}">Edit</a>
+                    <a class="btn btn-warning" href="edit/{{id}}">Edit</a>
                     {{else if enrolled}}
                     <span class="enrolled-span">You are enrolled</span>
                     {{else}}
                     {{!-- <a class="btn btn-primary" href="/">Enroll</a> --}}
-                    <form action='/enroll/{{id}}' method="POST">
+                    <form action='enroll/{{id}}' method="POST">
                         <input class="btn btn-primary" type="submit" value="Enroll">
                     </form>
                     {{/if}}
