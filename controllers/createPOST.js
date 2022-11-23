@@ -58,7 +58,7 @@ module.exports = function (req, res) {
                 type: "success",
                 message: "Video created successfully"
             });
-            res.redirect(res.context.prependURI + "/")
+            res.redirect(res.context.prependURI + "/home")
         })
         .catch(err => {
             console.log(err);

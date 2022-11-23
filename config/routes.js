@@ -49,7 +49,7 @@ module.exports = (app) => {
     });
 
     // HOME
-    app.get("/", function (req, res) {
+    app.get("/home", function (req, res) {
         if (res.context.user) userHome(req, res);
         else guestHome(req, res);
     });
@@ -65,7 +65,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Not logged in"
             });
-            res.redirect(res.context.prependURI + "/");
+            res.redirect(res.context.prependURI + "/home");
         }
     });
     app.post("/create", createPOST);
@@ -88,7 +88,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Already logged in"
             });
-            res.redirect(res.context.prependURI + "/");
+            res.redirect(res.context.prependURI + "/home");
         }
     });
     app.post("/login", login);
@@ -100,7 +100,7 @@ module.exports = (app) => {
             type: "success",
             message: "Successfully logged out"
         });
-        res.redirect(res.context.prependURI + "/");
+        res.redirect(res.context.prependURI + "/home");
     });
 
     // REGISTER
@@ -111,7 +111,7 @@ module.exports = (app) => {
                 type: "warning",
                 message: "Already logged in"
             });
-            res.redirect(res.context.prependURI + "/");
+            res.redirect(res.context.prependURI + "/home");
         }
     });
     app.post("/register",

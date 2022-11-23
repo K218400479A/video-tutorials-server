@@ -33,7 +33,7 @@ module.exports = {
                         type: "error",
                         message: "ERROR: video could not be found"
                     });
-                    res.redirect(res.context.prependURI + "/");
+                    res.redirect(res.context.prependURI + "/home");
                 });
         }
         else {
@@ -128,9 +128,9 @@ module.exports = {
                         type: "error",
                         message: "ERROR: video could not be found"
                     });
-                    res.redirect(res.context.prependURI + "/");
+                    res.redirect(res.context.prependURI + "/home");
                 });
         }
-        else res.redirect(res.context.prependURI + "/");
+        else res.redirect(res.context.prependURI + "/home");
     },
 }

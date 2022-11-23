@@ -29,5 +29,5 @@ module.exports = (req, res) => {
 
     }
 
-    else res.redirect(res.context.prependURI + "/");
+    else res.redirect(res.context.prependURI + "/home");
 };
