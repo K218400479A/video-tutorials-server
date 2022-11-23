@@ -12,5 +12,6 @@ module.exports = {
     },
     database: process.env.DATABASE_URI
         || "mongodb+srv://new-user_31:GOgFFDV3DXLxymPS@cluster0.gj3jj.mongodb.net/myFirstDatabase?retryWrites=true"
-        || "mongodb://localhost:27017/videos"
-    };
+        || "mongodb://localhost:27017/videos",
+    rootURI: process.env.ROOTURI || "/video-tutorials" || null,
+};
