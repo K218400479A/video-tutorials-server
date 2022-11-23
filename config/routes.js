@@ -17,6 +17,7 @@ const userHome = require("../controllers/user-home");
 const edit = require("../controllers/edit");
 const deletePOST = require("../controllers/deletePOST");
 const enrollPOST = require("../controllers/enrollPOST");
+const config = require("./config");
 
 
 
@@ -24,7 +25,7 @@ module.exports = (app) => {
 
     app.use((req, res, next) => {
         res.context = {};
-        res.context.prependURI = "/video-tutorials";
+        res.context.prependURI = config.rootURI;
         if (req.cookies.user) {
             let decodedJWT = jwt.verify(req.cookies.user, jwtConfig.secret);
             res.context = {
@@ -32,7 +33,8 @@ module.exports = (app) => {
                 user: {
                     id: decodedJWT.id,
                     username: decodedJWT.username
-                }
+                },
+                prependURI: config.rootURI,
             }
         }
         if (req.cookies.status) {

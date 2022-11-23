@@ -9,14 +9,6 @@ const mongoose = require("mongoose");
 module.exports = (app) => {
 
     //Setup the view engine
-    handlebars.create({
-        // Specify helpers which are only registered on this instance.
-        helpers: {
-            foo() { return 'FOO!'; },
-            bar() { return 'BAR!'; },
-            prependURI() { return '/video-tutorials'; }
-        }
-    });
     app.engine(".hbs", handlebars({
         extname: '.hbs'
     }));
