@@ -7,7 +7,7 @@ const Video = require("../models/Video");
 module.exports = (req, res) => {
     if (res.context.user) {
         const id = req.params.id;
-        Video.findByIdAndRemove(id)
+        Video.findByIdAndDelete(id)
             .then(video => {
                 if (res.context.user.id == video.creator) {
                     res.context.isCurrentUser = true;

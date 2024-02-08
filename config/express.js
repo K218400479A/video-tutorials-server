@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 module.exports = (app) => {
 
     //Setup the view engine
-    app.engine(".hbs", handlebars({
+    app.engine(".hbs", handlebars.engine({
         extname: '.hbs'
     }));
     app.set('view engine', '.hbs');
